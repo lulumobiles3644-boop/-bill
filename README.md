@@ -1,4 +1,4 @@
-# -bill
+`# -bill
 Datadog APM client for Java
 from datetime import datetime
 
@@ -51,3 +51,29 @@ for command in predefined_commands:
         stock_app.remove_stock(*command[1:])
     elif action == 'view_inventory':
         stock_app.view_inventory()
+        # lulu_billing.py
+
+import json
+import os
+
+DATA_FILE = "inventory.json"
+
+# Load inventory
+def load_inventory():
+    if os.path.exists(DATA_FILE):
+        with open(DATA_FILE, "r") as f:
+            return json.load(f)
+    return {}
+
+# Save inventory
+def save_inventory(inventory):
+    with open(DATA_FILE, "w") as f:
+        json.dump(inventory, f, indent=4)
+
+# Add product to inventory
+def add_product():
+    inventory = load_inventory()
+    name = input("Enter product name: ")
+    price = float(input("Enter price: "))
+    qty = int(input("Enter q
+`
